@@ -12,11 +12,19 @@ const { NotImplementedError } = require('../extensions/index.js');
  * For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
  *
  */
-function getSumOfDigits(/* n */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
-}
+function getSumOfDigits(n) {
+  let numArr = n.toString().split("");
 
+  if(n / 10 < 1){
+    return n
+  }
+
+  let result = numArr.reduce((item1, item2) => {
+    return item1 + +item2;
+  }, 0)
+
+  return getSumOfDigits(result)
+}
 module.exports = {
   getSumOfDigits
 };
