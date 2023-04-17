@@ -10,7 +10,7 @@ const chainMaker = {
     return this.chainArray.length;
   },
   addLink(value) {
-    if(value === null || value === undefined){
+    if(value === undefined){
       this.chainArray.push('( )')
     }
     this.chainArray.push(`( ${value} )`);

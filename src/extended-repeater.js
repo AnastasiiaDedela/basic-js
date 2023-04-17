@@ -15,8 +15,17 @@ const { NotImplementedError } = require('../extensions/index.js');
  * => 'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'
  *
  */
+
 function repeater(str, options) {
   
+  let additionString = ""
+
+  if(options.additionRepeatTimes > 0){
+    for (let i = 0; i < options.additionRepeatTimes; i++){
+      additionString += (options.additionString + options.additionSeparator)
+    }
+  }
+
 }
 
 module.exports = {
