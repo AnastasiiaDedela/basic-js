@@ -18,14 +18,49 @@ const { NotImplementedError } = require('../extensions/index.js');
 
 function repeater(str, options) {
   
-  let additionString = ""
+  let {
+    repeatTimes,
+    separator,
+    addition,
+    additionRepeatTimes,
+    additionSeparator
+  } = options
 
-  if(options.additionRepeatTimes > 0){
-    for (let i = 0; i < options.additionRepeatTimes; i++){
-      additionString += (options.additionString + options.additionSeparator)
-    }
+  addition = addition || ""
+  additionRepeatTimes = additionRepeatTimes || 1
+  repeatTimes = repeatTimes || 1
+
+  if(typeof additionSeparator === "undefined"){
+    additionSeparator = "|"
+  }
+  if(typeof additionSeparator === "boolean"){
+    additionSeparator = String(additionSeparator)
   }
 
+  if(typeof separator === "undefined"){
+    separator = "+"
+  }
+  if(typeof separator === "boolean"){
+    separator = String(separator)
+  }
+
+  let additionalString = addition
+
+  for(let i = 1; i < additionRepeatTimes; i++){
+    additionalString += (additionSeparator + addition)
+  }
+  console.log("==========================")
+  console.log("\tAddition: ", addition)
+  console.log("\tAdditional String: ", additionalString)
+  console.log("==========================")
+
+  let resultString = str + additionalString
+
+  for(let i = 1; i < repeatTimes; i++){
+    resultString += (separator + str + additionalString)
+  }
+
+  return resultString
 }
 
 module.exports = {
